@@ -1,0 +1,3 @@
+/home/forest/CLionProjects/cpp-assig-3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/forest/CLionProjects/cpp-assig-3/cmake-build-debug/CMakeFiles/cpp_assig_3.dir
+/home/forest/CLionProjects/cpp-assig-3/cmake-build-debug/CMakeFiles/edit_cache.dir

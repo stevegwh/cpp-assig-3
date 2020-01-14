@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/forest/CLionProjects/cpp-assig-3/RingBuffer.hpp
+cstddef
+-
+iterator
+-
+memory
+-
+stdexcept
+-
+iostream
+-
+
+/home/forest/CLionProjects/cpp-assig-3/test_skel.cpp
+algorithm
+-
+iostream
+-
+RingBuffer.hpp
+/home/forest/CLionProjects/cpp-assig-3/RingBuffer.hpp
+
