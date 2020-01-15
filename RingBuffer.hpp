@@ -391,7 +391,13 @@ public:
 
     size_type size() const
     {
-	return 0;  // *** Replace this with your code (2 marks)
+        auto i = m_begin;
+        int count = 0;
+        while (i != m_end) {
+            count++;
+            i++;
+        }
+	return count;  // *** Replace this with your code (2 marks)
     }
 private:
     // This is a special syntax (not examinable) for declaring a
