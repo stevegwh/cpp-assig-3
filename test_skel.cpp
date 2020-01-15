@@ -23,13 +23,20 @@ int main()
     rb.push_back(56);
     rb.push_back(12);
     rb.push_back(24);
+    cout << rb.front() << endl;
     cout << "Empty? " << rb.empty()
          << "\nFront: " << rb.front() << endl;
     show(rb);
 
+    auto it = rb.begin();
+    cout << *it << endl;
+    it++;
+    cout << *it << endl;
+    it--;
+    cout << *it << endl;
 
-    for (auto it = rb.begin(); it != rb.end(); ++it)
-        cout << *it << endl;
+
+//    cout << *it << endl;
 
     return 0;
 }

@@ -125,7 +125,8 @@ public:
 
     Reference operator*() const
     {
-	  return *static_cast<T*>(nullptr); // *** Replace this with your code (2 marks)
+        return *m_ptr;
+//	  return *static_cast<T*>(nullptr); // *** Replace this with your code (2 marks)
     }
 
     // *** If you are attempting only the baseline version of the
@@ -149,22 +150,28 @@ public:
 
     _RBIterator& operator++()
     {
-	return *this;  // *** Replace this with your code (4 marks)
+        m_ptr = m_rb->stepForward(m_ptr, 1);
+        std::cout << "Plus plus called" << std::endl;
+        return *this;  // *** Replace this with your code (4 marks)
     }
 
     _RBIterator operator++(int)
     {
-	return *this; // *** Replace this with your code (6 marks)
+        m_ptr = m_rb->stepForward(m_ptr, 1);
+        std::cout << "Plus plus called" << std::endl;
+        return *this; // *** Replace this with your code (6 marks)
     }
 
     _RBIterator& operator--()
     {
-	return *this; // *** Replace this with your code (4 marks)
+        m_ptr = m_rb->stepForward(m_ptr, -1);
+        return *this; // *** Replace this with your code (4 marks)
     }
 
     _RBIterator operator--(int)
     {
-	return *this; // *** Replace this with your code (6 marks)
+        m_ptr = m_rb->stepForward(m_ptr, -1);
+        return *this; // *** Replace this with your code (6 marks)
     }
 
     _RBIterator& operator+=(difference_type n)
@@ -259,7 +266,8 @@ public:
 
     iterator begin()
     {
-      return iterator(this, m_begin); // *** Replace this with your code (2 marks)
+        // TODO: memory leak
+      return *(new iterator(this, m_begin)); // *** Replace this with your code (2 marks)
     }
 
     const_iterator begin() const
@@ -310,7 +318,7 @@ public:
 
     iterator end()
     {
-	return iterator(this, m_end);  // *** Replace this with your code (2 marks)
+    return *(new iterator(this, m_end)); // *** Replace this with your code (2 marks)
     }
 
     const_iterator end() const
@@ -444,7 +452,19 @@ private:
     Ptr stepForward(Ptr ptr, std::ptrdiff_t steps) const
     {
         if (steps == 0) return ptr;
-
+        // Define whether we are going towards 0 or capacity
+        auto direction = steps < 0 ? m_begin : m_end;
+        if (ptr == direction)
+        {
+            // Define which pointer to 'wrap' around to
+            auto wrapAround = direction == m_begin ? m_end : m_begin;
+            ptr = wrapAround;
+        }
+        else
+        {
+            ptr += steps;
+        }
+        return ptr;
 	// *** Your code goes here (18 marks)
     }
 };
