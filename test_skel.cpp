@@ -17,8 +17,10 @@ void show(const RingBuffer<int>& rb)
 int main()
 {
     RingBuffer<int> rb(7);
+    RingBuffer<int> rb2(12);
     cout << "Capacity: " << rb.capacity()
 	 << "\nEmpty? " << rb.empty() << endl;
+
     rb.push_back(28);
     rb.push_back(56);
     rb.push_back(12);
@@ -28,10 +30,12 @@ int main()
          << "\nFront: " << rb.front() << endl;
     show(rb);
 
+/*
     for (auto it = rb.begin(); it != rb.end(); ++it)
     {
         cout << *it << endl;
     }
+*/
 
 
 /*
