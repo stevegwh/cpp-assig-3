@@ -28,17 +28,28 @@ int main()
          << "\nFront: " << rb.front() << endl;
     show(rb);
 
-    auto it = rb.begin();
+    for (auto it = rb.begin(); it != rb.end(); ++it)
+    {
+        cout << *it << endl;
+    }
 
-    cout << *it << endl;
-    it++;
-    cout << *it << endl;
-    it++;
-    cout << *it << endl;
-    it++;
-    cout << *it << endl;
-    it++;
-    cout << *it << endl;
+
+/*
+    auto it1 = rb.begin();
+    auto it2 = rb.end();
+    cout << (it1 == it2) << endl;
+*/
+
+/*
+    auto it = rb.begin();
+    int i = 0;
+    while(i < 10)
+    {
+        cout << *it << endl;
+        it--;
+        i++;
+    }
+*/
 
     return 0;
 }

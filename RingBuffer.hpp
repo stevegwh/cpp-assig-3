@@ -140,7 +140,8 @@ public:
     // *** rhs relates to the same RingBuffer as *this. 
     bool operator==(const _RBIterator& rhs) const
     {
-	return false;  // *** Replace this with your code (2 marks)
+        return m_ptr == rhs.m_ptr;
+//	return false;  // *** Replace this with your code (2 marks)
     }
 
     bool operator!=(const _RBIterator& rhs) const
@@ -151,27 +152,27 @@ public:
     _RBIterator& operator++()
     {
         m_ptr = m_rb->stepForward(m_ptr, 1);
-        std::cout << "Plus plus called" << std::endl;
+        std::cout << "Plus plus 1 called" << std::endl;
         return *this;  // *** Replace this with your code (4 marks)
     }
 
     _RBIterator operator++(int)
     {
         m_ptr = m_rb->stepForward(m_ptr, 1);
-        std::cout << "Plus plus called" << std::endl;
+        std::cout << "Plus plus 2 called" << std::endl;
         return *this; // *** Replace this with your code (6 marks)
     }
 
     _RBIterator& operator--()
     {
-        std::cout << "minus minus called" << std::endl;
+        std::cout << "minus minus 1 called" << std::endl;
         m_ptr = m_rb->stepForward(m_ptr, -1);
         return *this; // *** Replace this with your code (4 marks)
     }
 
     _RBIterator operator--(int)
     {
-        std::cout << "minus minus called" << std::endl;
+        std::cout << "minus minus 2 called" << std::endl;
         m_ptr = m_rb->stepForward(m_ptr, -1);
         return *this; // *** Replace this with your code (6 marks)
     }
@@ -184,7 +185,9 @@ public:
 
     _RBIterator operator+(difference_type n)
     {
-	return *this; // *** Replace this with your code (4 marks)
+        auto ptr = m_rb->stepForward(m_ptr, n);
+        auto it = _RBIterator(m_rb, ptr);
+        return it; // *** Replace this with your code (4 marks)
     }
 
     // It would be logical to define operator-= and operator-
@@ -303,7 +306,7 @@ public:
         T *it =  m_base;
         while (it != m_limit)
         {
-            *it = nullptr;
+            *it = 0;
             it++;
         }
         m_begin = m_base;
@@ -461,26 +464,40 @@ private:
     template <typename Ptr>
     Ptr stepForward(Ptr ptr, std::ptrdiff_t steps) const
     {
+        // TODO: Refactor
         if (steps == 0) return ptr;
 
         if (steps > 0)
         {
-            if (ptr + 1 == m_end)
+            for (int i = 0; i < steps; ++i)
             {
-                ptr = m_begin;
+                if (ptr == m_end)
+                {
+                    ptr = m_begin;
+                }
+                else
+                {
+                    ptr++;
+                }
             }
         }
         else
         {
-            if (ptr == m_begin)
+            steps *= -1;
+            for (int i = 0; i < steps; ++i)
             {
-                ptr = m_end;
+                if (ptr == m_begin)
+                {
+                    ptr = m_end;
+                }
+                else
+                {
+                    ptr--;
+                }
             }
         }
 
-        ptr += steps;
-
-        return ptr;
+    return ptr;
 	// *** Your code goes here (18 marks)
     }
 };
