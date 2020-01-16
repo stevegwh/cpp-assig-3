@@ -29,14 +29,16 @@ int main()
     show(rb);
 
     auto it = rb.begin();
+
     cout << *it << endl;
     it++;
     cout << *it << endl;
-    it--;
+    it++;
     cout << *it << endl;
-
-
-//    cout << *it << endl;
+    it++;
+    cout << *it << endl;
+    it++;
+    cout << *it << endl;
 
     return 0;
 }

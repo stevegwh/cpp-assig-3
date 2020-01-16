@@ -164,19 +164,22 @@ public:
 
     _RBIterator& operator--()
     {
+        std::cout << "minus minus called" << std::endl;
         m_ptr = m_rb->stepForward(m_ptr, -1);
         return *this; // *** Replace this with your code (4 marks)
     }
 
     _RBIterator operator--(int)
     {
+        std::cout << "minus minus called" << std::endl;
         m_ptr = m_rb->stepForward(m_ptr, -1);
         return *this; // *** Replace this with your code (6 marks)
     }
 
     _RBIterator& operator+=(difference_type n)
     {
-	return *this;  // *** Replace this with your code (4 marks)
+        m_ptr = m_rb->stepForward(m_ptr, n);
+        return *this;  // *** Replace this with your code (4 marks)
     }
 
     _RBIterator operator+(difference_type n)
@@ -266,13 +269,15 @@ public:
 
     iterator begin()
     {
-        // TODO: memory leak
-      return *(new iterator(this, m_begin)); // *** Replace this with your code (2 marks)
+        std::unique_ptr<iterator> it(new iterator(this, m_begin));
+        return *it;
     }
 
     const_iterator begin() const
     {
-      return const_iterator(); // *** Replace this with your code (2 marks)
+        std::unique_ptr<const_iterator> it(new const_iterator(this, m_begin));
+        return *it;
+//      return const_iterator(); // *** Replace this with your code (2 marks)
     }
 
     const_iterator cbegin() const
@@ -318,12 +323,16 @@ public:
 
     iterator end()
     {
-    return *(new iterator(this, m_end)); // *** Replace this with your code (2 marks)
+        std::unique_ptr<iterator> it(new iterator(this, m_end));
+        return *it;
+//    return *(new iterator(this, m_end + 1)); // *** Replace this with your code (2 marks)
     }
 
     const_iterator end() const
     {
-	return const_iterator();  // *** Replace this with your code (2 marks)
+        std::unique_ptr<const_iterator> it(new const_iterator(this, m_end));
+        return *it;
+//	return const_iterator();  // *** Replace this with your code (2 marks)
     }
 
     const_iterator cend() const
@@ -357,6 +366,7 @@ public:
     {
       if (!empty())
       {
+        *m_begin = 0;
         if (m_begin == m_limit)
         {
           m_begin = m_base;
@@ -384,16 +394,16 @@ public:
       //   std::cout << "Buffer full, throw exception here" << std::endl;
       //   return;
       // }
-      *m_end = elem;
 //      std::cout << *m_end << std::endl;
-      if (m_end == m_limit) 
-      {
-        m_end = m_base;
-      } 
-      else
-      {
-        m_end++;
-      }
+        *m_end = elem;
+        if (m_end + 1 == m_limit)
+        {
+            m_end = m_base;
+        }
+        else
+        {
+            m_end++;
+        }
 	// *** Your code goes here (12 marks)
     }
 
@@ -452,18 +462,24 @@ private:
     Ptr stepForward(Ptr ptr, std::ptrdiff_t steps) const
     {
         if (steps == 0) return ptr;
-        // Define whether we are going towards 0 or capacity
-        auto direction = steps < 0 ? m_begin : m_end;
-        if (ptr == direction)
+
+        if (steps > 0)
         {
-            // Define which pointer to 'wrap' around to
-            auto wrapAround = direction == m_begin ? m_end : m_begin;
-            ptr = wrapAround;
+            if (ptr + 1 == m_end)
+            {
+                ptr = m_begin;
+            }
         }
         else
         {
-            ptr += steps;
+            if (ptr == m_begin)
+            {
+                ptr = m_end;
+            }
         }
+
+        ptr += steps;
+
         return ptr;
 	// *** Your code goes here (18 marks)
     }

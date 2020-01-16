@@ -71,7 +71,9 @@
       <option name="presentableId" value="Default" />
       <updated>1579010750993</updated>
       <workItem from="1579010752583" duration="6691000" />
-      <workItem from="1579100399915" duration="5088000" />
+      <workItem from="1579100399915" duration="9256000" />
+      <workItem from="1579183698628" duration="1511000" />
+      <workItem from="1579186434795" duration="675000" />
     </task>
     <task id="LOCAL-00001" summary="Added size method">
       <created>1579100539365</created>
@@ -80,7 +82,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579100539365</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added stepForward, ptr works">
+      <created>1579105518513</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1579105518513</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,37 +97,38 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added size method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added size method" />
+    <MESSAGE value="Added stepForward, ptr works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added stepForward, ptr works" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="569" y="61" width="772" height="980" key="CommitChangelistDialog2" timestamp="1579100539229">
+    <state x="569" y="61" width="772" height="980" key="CommitChangelistDialog2" timestamp="1579105518390">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state x="569" y="61" width="772" height="980" key="CommitChangelistDialog2/0.24.1920.1056@0.24.1920.1056" timestamp="1579100539229" />
-    <state width="1874" height="190" key="GridCell.Tab.0.bottom" timestamp="1579105267864">
+    <state x="569" y="61" width="772" height="980" key="CommitChangelistDialog2/0.24.1920.1056@0.24.1920.1056" timestamp="1579105518390" />
+    <state width="1874" height="190" key="GridCell.Tab.0.bottom" timestamp="1579186920131">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="1874" height="190" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1579105267864" />
-    <state width="1874" height="190" key="GridCell.Tab.0.center" timestamp="1579105267864">
+    <state width="1874" height="190" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1579186920131" />
+    <state width="1874" height="190" key="GridCell.Tab.0.center" timestamp="1579186920130">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="1874" height="190" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1579105267864" />
-    <state width="1874" height="190" key="GridCell.Tab.0.left" timestamp="1579105267863">
+    <state width="1874" height="190" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1579186920130" />
+    <state width="1874" height="190" key="GridCell.Tab.0.left" timestamp="1579186920130">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="1874" height="190" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1579105267863" />
-    <state width="1874" height="190" key="GridCell.Tab.0.right" timestamp="1579105267864">
+    <state width="1874" height="190" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1579186920130" />
+    <state width="1874" height="190" key="GridCell.Tab.0.right" timestamp="1579186920130">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="1874" height="190" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1579105267864" />
-    <state x="560" y="284" key="Vcs.Push.Dialog.v2" timestamp="1579100546142">
+    <state width="1874" height="190" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1579186920130" />
+    <state x="560" y="284" key="Vcs.Push.Dialog.v2" timestamp="1579105521373">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state x="560" y="284" key="Vcs.Push.Dialog.v2/0.24.1920.1056@0.24.1920.1056" timestamp="1579100546142" />
-    <state x="543" y="171" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579024296462">
+    <state x="560" y="284" key="Vcs.Push.Dialog.v2/0.24.1920.1056@0.24.1920.1056" timestamp="1579105521373" />
+    <state x="543" y="171" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579110403663">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state x="543" y="171" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.24.1920.1056@0.24.1920.1056" timestamp="1579024296462" />
+    <state x="543" y="171" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.24.1920.1056@0.24.1920.1056" timestamp="1579110403663" />
     <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1579102062834">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
