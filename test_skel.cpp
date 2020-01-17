@@ -50,7 +50,7 @@ int main()
     while(i < 10)
     {
         cout << *it << endl;
-        it--;
+        ++it;
         i++;
     }
 */

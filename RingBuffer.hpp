@@ -120,7 +120,8 @@ public:
     template <typename P, typename R>
     _RBIterator& operator=(const _RBIterator<T, P, R>& pattern)
     {
-	return *this; // *** Replace this with your code (6 marks)
+        this = *pattern;
+        return *this; // *** Replace this with your code (6 marks)
     }
 
     Reference operator*() const
@@ -158,9 +159,9 @@ public:
 
     _RBIterator operator++(int)
     {
-        m_ptr = m_rb->stepForward(m_ptr, 1);
-        std::cout << "Plus plus 2 called" << std::endl;
-        return *this; // *** Replace this with your code (6 marks)
+        _RBIterator that(*this);
+        operator++();
+        return that; // *** Replace this with your code (6 marks)
     }
 
     _RBIterator& operator--()
@@ -172,9 +173,9 @@ public:
 
     _RBIterator operator--(int)
     {
-        std::cout << "minus minus 2 called" << std::endl;
-        m_ptr = m_rb->stepForward(m_ptr, -1);
-        return *this; // *** Replace this with your code (6 marks)
+        _RBIterator that(*this);
+        operator--();
+        return that; // *** Replace this with your code (6 marks)
     }
 
     _RBIterator& operator+=(difference_type n)
@@ -294,7 +295,7 @@ public:
      */
     size_type capacity() const
     {
-        return sizeof(m_buffer) - 1;  // *** Replace this with your code (2 marks)
+        return (m_limit - m_base) - 1;  // *** Replace this with your code (2 marks)
     }
 
     /** @brief Remove all data from this RingBuffer.
@@ -398,6 +399,7 @@ public:
       //   return;
       // }
 //      std::cout << *m_end << std::endl;
+
         *m_end = elem;
         if (m_end + 1 == m_limit)
         {
