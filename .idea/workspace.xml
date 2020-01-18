@@ -14,6 +14,7 @@
     <list default="true" id="13746e72-1127-40cd-ad37-a6e99c991048" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RingBuffer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/RingBuffer.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" afterPath="$PROJECT_DIR$/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_skel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test_skel.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,6 +73,7 @@
       <workItem from="1579100399915" duration="9256000" />
       <workItem from="1579183698628" duration="1511000" />
       <workItem from="1579186434795" duration="10514000" />
+      <workItem from="1579354727972" duration="6185000" />
     </task>
     <task id="LOCAL-00001" summary="Added size method">
       <created>1579100539365</created>
@@ -146,13 +148,13 @@
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
     <state x="560" y="284" key="Vcs.Push.Dialog.v2/0.24.1920.1056@0.24.1920.1056" timestamp="1579195698692" />
-    <state x="543" y="171" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579211505457">
+    <state x="543" y="171" width="546" height="690" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1579357689285">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state x="543" y="171" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.24.1920.1056@0.24.1920.1056" timestamp="1579211505457" />
-    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1579102062834">
+    <state x="543" y="171" width="546" height="690" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.24.1920.1056@0.24.1920.1056" timestamp="1579357689285" />
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1579359515730">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1579102062834" />
+    <state x="623" y="257" width="672" height="678" key="search.everywhere.popup/0.24.1920.1056@0.24.1920.1056" timestamp="1579359515730" />
   </component>
 </project>

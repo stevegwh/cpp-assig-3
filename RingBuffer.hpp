@@ -205,7 +205,9 @@ public:
 
     Reference operator[](difference_type n)
     {
-	return *static_cast<T*>(nullptr); // *** Replace this with your code (2 marks)
+        if ((int)n >= (int)m_rb->size()) return *static_cast<T*>(nullptr);
+        return *(m_ptr + n);
+//        return *static_cast<T*>(nullptr); // *** Replace this with your code (2 marks)
     }
 private:
     // Pointer to the RingBuffer to which this iterator relates:
@@ -273,12 +275,14 @@ public:
 
     iterator begin()
     {
+        std::cout << "Normal constructor called" << std::endl;
         std::unique_ptr<iterator> it(new iterator(this, m_begin));
         return *it;
     }
 
     const_iterator begin() const
     {
+        std::cout << "Const constructor called" << std::endl;
         std::unique_ptr<const_iterator> it(new const_iterator(this, m_begin));
         return *it;
 //      return const_iterator(); // *** Replace this with your code (2 marks)
@@ -520,7 +524,12 @@ template <typename T>
 bool operator==(const RingBuffer<T>& l,
 		const RingBuffer<T>& r)
 {
-    return false;  // *** Replace this with your code (22 marks)
+    if (l.size() != r.size()) return false;
+    for (auto it = l.begin(), it2 = r.begin(); it != l.end(); ++it, ++it2)
+    {
+        if (*it != *it2) return false;
+    }
+    return true;  // *** Replace this with your code (22 marks)
 }
 
 template <typename T>

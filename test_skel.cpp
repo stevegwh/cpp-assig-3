@@ -30,6 +30,15 @@ int main()
          << "\nFront: " << rb.front() << endl;
     show(rb);
 
+//    cout << (rb == rb2) << endl;
+
+
+
+
+    auto it = rb.begin();
+    cout << *it << endl;
+    cout << it[3] << endl;
+
 /*
     for (auto it = rb.begin(); it != rb.end(); ++it)
     {
