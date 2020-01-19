@@ -26,7 +26,7 @@ int main()
     rb.push_back(12);
     rb.push_back(24);
     rb.push_back(24);
-    rb.push_back(24);
+
     cout << "Empty? " << rb.empty()
          << "\nFront: " << rb.front() << endl;
     show(rb);

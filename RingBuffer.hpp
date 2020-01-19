@@ -200,7 +200,15 @@ public:
     difference_type
     operator-(const _RBIterator& rhs) const
     {
-        return (m_ptr - &*rhs);
+      auto it = _RBIterator(m_rb, m_ptr);
+      int i = 0;
+      while (it != rhs) 
+      {
+        it--;
+        i++;
+      }
+      return i;
+      // return (m_ptr - &*rhs);
 	// return 0;  // *** Replace this with your code (14 marks)
     }
 
@@ -424,13 +432,12 @@ public:
     size_type size() const
     {
         // auto i = m_begin;
-        // int count = 0;
+        int count = 0;
         // while (i != m_end) {
         //     count++;
         //     i++;
         // }
-    // return count;  // *** Replace this with your code (2 marks)
-      return end() - begin();
+     return count;  // *** Replace this with your code (2 marks)
     }
 private:
     // This is a special syntax (not examinable) for declaring a
