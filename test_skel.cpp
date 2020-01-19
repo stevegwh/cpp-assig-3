@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include <string>
 
 #include "RingBuffer.hpp"
 
@@ -17,7 +18,6 @@ void show(const RingBuffer<int>& rb)
 int main()
 {
     RingBuffer<int> rb(7);
-    RingBuffer<int> rb2(12);
     cout << "Capacity: " << rb.capacity()
 	 << "\nEmpty? " << rb.empty() << endl;
 
@@ -25,19 +25,26 @@ int main()
     rb.push_back(56);
     rb.push_back(12);
     rb.push_back(24);
-    cout << rb.front() << endl;
+    rb.push_back(24);
+    rb.push_back(24);
     cout << "Empty? " << rb.empty()
          << "\nFront: " << rb.front() << endl;
     show(rb);
 
+
 //    cout << (rb == rb2) << endl;
 
 
+    auto it = rb.begin();
+    auto it2 = rb.end();
+    cout << it2 - it << endl;
 
 
+/*
     auto it = rb.begin();
     cout << *it << endl;
     cout << it[3] << endl;
+*/
 
 /*
     for (auto it = rb.begin(); it != rb.end(); ++it)

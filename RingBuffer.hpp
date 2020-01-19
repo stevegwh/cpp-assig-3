@@ -153,7 +153,7 @@ public:
     _RBIterator& operator++()
     {
         m_ptr = m_rb->stepForward(m_ptr, 1);
-        std::cout << "Plus plus 1 called" << std::endl;
+        // std::cout << "Plus plus 1 called" << std::endl;
         return *this;  // *** Replace this with your code (4 marks)
     }
 
@@ -166,7 +166,7 @@ public:
 
     _RBIterator& operator--()
     {
-        std::cout << "minus minus 1 called" << std::endl;
+        // std::cout << "minus minus 1 called" << std::endl;
         m_ptr = m_rb->stepForward(m_ptr, -1);
         return *this; // *** Replace this with your code (4 marks)
     }
@@ -200,7 +200,8 @@ public:
     difference_type
     operator-(const _RBIterator& rhs) const
     {
-	return 0;  // *** Replace this with your code (14 marks)
+        return (m_ptr - &*rhs);
+	// return 0;  // *** Replace this with your code (14 marks)
     }
 
     Reference operator[](difference_type n)
@@ -275,22 +276,24 @@ public:
 
     iterator begin()
     {
-        std::cout << "Normal constructor called" << std::endl;
+        // std::cout << "Normal constructor called" << std::endl;
         std::unique_ptr<iterator> it(new iterator(this, m_begin));
         return *it;
     }
 
     const_iterator begin() const
     {
-        std::cout << "Const constructor called" << std::endl;
-        std::unique_ptr<const_iterator> it(new const_iterator(this, m_begin));
+        // std::cout << "Const constructor called" << std::endl;
+        const std::unique_ptr<const_iterator> it(new const_iterator(this, m_begin));
         return *it;
 //      return const_iterator(); // *** Replace this with your code (2 marks)
     }
 
     const_iterator cbegin() const
     {
-	return const_iterator(); // *** Replace this with your code (2 marks)
+        const std::unique_ptr<const_iterator> it(new const_iterator(this, m_begin));
+        return *it;
+//	return const_iterator(); // *** Replace this with your code (2 marks)
     }
 
     /** @brief Capacity of the RingBuffer.
@@ -338,14 +341,16 @@ public:
 
     const_iterator end() const
     {
-        std::unique_ptr<const_iterator> it(new const_iterator(this, m_end));
+        const std::unique_ptr<const_iterator> it(new const_iterator(this, m_end));
         return *it;
 //	return const_iterator();  // *** Replace this with your code (2 marks)
     }
 
     const_iterator cend() const
     {
-	return const_iterator();  // *** Replace this with your code (2 marks)
+        const std::unique_ptr<const_iterator> it(new const_iterator(this, m_end));
+        return *it;
+//	return const_iterator();  // *** Replace this with your code (2 marks)
     }
 
     /** @brief Element at the front of the queue.
@@ -362,7 +367,7 @@ public:
 
     const T& front() const
     {
-	return *m_limit; // *** Replace this with your code (2 marks)
+        return *m_begin; // *** Replace this with your code (2 marks)
     }
 
     /** @brief Remove the element at the front of the queue.
@@ -418,13 +423,14 @@ public:
 
     size_type size() const
     {
-        auto i = m_begin;
-        int count = 0;
-        while (i != m_end) {
-            count++;
-            i++;
-        }
-	return count;  // *** Replace this with your code (2 marks)
+        // auto i = m_begin;
+        // int count = 0;
+        // while (i != m_end) {
+        //     count++;
+        //     i++;
+        // }
+    // return count;  // *** Replace this with your code (2 marks)
+      return end() - begin();
     }
 private:
     // This is a special syntax (not examinable) for declaring a
