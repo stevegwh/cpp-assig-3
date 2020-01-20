@@ -31,13 +31,16 @@ int main()
          << "\nFront: " << rb.front() << endl;
     show(rb);
 
+    auto it1 = rb.begin();
+    auto it2 = rb.begin() + 2;
+    cout << (it1 < it2) << endl;
 
 //    cout << (rb == rb2) << endl;
 
 
-    auto it = rb.begin();
-    auto it2 = rb.end();
-    cout << it2 - it << endl;
+    // auto it = rb.begin();
+    // auto it2 = rb.end();
+    // cout << it2 - it << endl;
 
 
 /*

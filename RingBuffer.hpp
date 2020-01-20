@@ -231,7 +231,20 @@ inline bool
 operator<(const _RBIterator<T, Pointer, Reference>& l,
 	  const _RBIterator<T, Pointer, Reference>& r)
 {
-    return false;  // *** Replace this with your code (2 marks)
+  // int i = -1;
+  // int j = 0;
+  // while (l != l.end())
+  // {
+  //   l++;
+  //   i++;
+  // }
+  // while (r != r.end())
+  // {
+  //   r++;
+  //   j++;
+  // }
+  //   return i < j;  // *** Replace this with your code (2 marks)
+  return false;
 }
 
 /** @brief Ring Buffer.
@@ -319,8 +332,8 @@ public:
      */
     void clear()
     {
-        T *it =  m_base;
-        while (it != m_limit)
+        auto it =  begin();
+        while (it != end())
         {
             *it = 0;
             it++;
@@ -409,14 +422,13 @@ public:
      */
     void push_back(const T& elem)
     {
-      // TODO: If begin is the same as end then we are full
-      // if (m_begin == m_end)
-      // {
-      //   std::cout << "Buffer full, throw exception here" << std::endl;
-      //   return;
-      // }
-//      std::cout << *m_end << std::endl;
 
+      if (m_end + 1 == m_begin)
+      {
+        //TODO: Exception needed
+         std::cout << "Buffer full, throw exception here" << std::endl;
+         return;
+      }
         *m_end = elem;
         if (m_end + 1 == m_limit)
         {
