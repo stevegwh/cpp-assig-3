@@ -147,7 +147,7 @@ public:
 
     bool operator!=(const _RBIterator& rhs) const
     {
-	return !operator==(rhs);
+        return !operator==(rhs);
     }
 
     _RBIterator& operator++()
@@ -200,22 +200,23 @@ public:
     difference_type
     operator-(const _RBIterator& rhs) const
     {
-      auto it = _RBIterator(m_rb, m_ptr);
+        // TODO: What should I do if rhs is bigger than lhs? Wrap round?
+      auto lhs = _RBIterator(m_rb, m_ptr);
       int i = 0;
-      while (it != rhs) 
+      while (lhs != rhs)
       {
-        it--;
+        lhs--;
         i++;
       }
-      return i;
-      // return (m_ptr - &*rhs);
+    return i;
+//       return (m_ptr - &*rhs);
 	// return 0;  // *** Replace this with your code (14 marks)
     }
 
     Reference operator[](difference_type n)
     {
         if ((int)n >= (int)m_rb->size()) return *static_cast<T*>(nullptr);
-        return *(m_ptr + n);
+        return *(*this + n);
 //        return *static_cast<T*>(nullptr); // *** Replace this with your code (2 marks)
     }
 private:
@@ -231,20 +232,7 @@ inline bool
 operator<(const _RBIterator<T, Pointer, Reference>& l,
 	  const _RBIterator<T, Pointer, Reference>& r)
 {
-  // int i = -1;
-  // int j = 0;
-  // while (l != l.end())
-  // {
-  //   l++;
-  //   i++;
-  // }
-  // while (r != r.end())
-  // {
-  //   r++;
-  //   j++;
-  // }
-  //   return i < j;  // *** Replace this with your code (2 marks)
-  return false;
+    returnfalse;
 }
 
 /** @brief Ring Buffer.

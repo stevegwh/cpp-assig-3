@@ -23,16 +23,20 @@ int main()
 
     rb.push_back(28);
     rb.push_back(56);
+    rb.pop_front();
+    rb.pop_front();
+    rb.push_back(13);
+    rb.push_back(24);
+    rb.push_back(24);
     rb.push_back(12);
-    rb.push_back(24);
-    rb.push_back(24);
+    rb.push_back(12);
 
     cout << "Empty? " << rb.empty()
          << "\nFront: " << rb.front() << endl;
     show(rb);
 
     auto it1 = rb.begin();
-    auto it2 = rb.begin() + 2;
+    auto it2 = rb.begin() + 4;
     cout << (it1 < it2) << endl;
 
 //    cout << (rb == rb2) << endl;
