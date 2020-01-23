@@ -31,20 +31,25 @@ int main()
 
     rb.push_back(28);
     rb.push_back(56);
-    rb.pop_front();
-    rb.pop_front();
     rb.push_back(13);
     rb.push_back(24);
+    rb.pop_front();
+    rb.pop_front();
+    rb.pop_front();
+    rb.pop_front();
     rb.push_back(24);
-    rb.pop_front();
-    rb.pop_front();
-    rb.push_back(12);
-    rb.push_back(14);
+    rb.push_back(24);
+    rb.push_back(24);
 
     cout << "Empty? " << rb.empty()
          << "\nFront: " << rb.front() << endl;
     show(rb);
+    auto it = rb.begin();
+    auto it2 = rb.begin() + 2;
 
+    std::cout << (it - it2) << std::endl;
+
+/*
     auto it1 = rb.begin();
     auto it2 = rb.begin() + 2;
     cout << (it2 < it1) << endl;
@@ -56,6 +61,7 @@ int main()
     it1++;
     cout << *it1 << endl;
     it1++;
+*/
 
 //    cout << (rb == rb2) << endl;
 
