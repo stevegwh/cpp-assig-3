@@ -200,17 +200,7 @@ public:
     difference_type
     operator-(const _RBIterator& rhs) const
     {
-        // TODO: What should I do if rhs is bigger than lhs? Wrap round?
-      auto lhs = _RBIterator(m_rb, m_ptr);
-      int i = 0;
-      while (lhs != rhs)
-      {
-        lhs--;
-        i++;
-      }
-    return i;
-//       return (m_ptr - &*rhs);
-	// return 0;  // *** Replace this with your code (14 marks)
+       return (m_ptr - &*rhs);
     }
 
     Reference operator[](difference_type n)
@@ -232,7 +222,7 @@ inline bool
 operator<(const _RBIterator<T, Pointer, Reference>& l,
 	  const _RBIterator<T, Pointer, Reference>& r)
 {
-    returnfalse;
+    return (l - r) < 0;
 }
 
 /** @brief Ring Buffer.
@@ -389,14 +379,7 @@ public:
       if (!empty())
       {
         *m_begin = 0;
-        if (m_begin == m_limit)
-        {
-          m_begin = m_base;
-        }
-        else
-        {
-          m_begin++;
-        }
+        m_begin = m_begin == m_limit ? m_base : m_begin + 1;
       }
 	// *** Your code goes here (10 marks)
     }
@@ -418,14 +401,7 @@ public:
          return;
       }
         *m_end = elem;
-        if (m_end + 1 == m_limit)
-        {
-            m_end = m_base;
-        }
-        else
-        {
-            m_end++;
-        }
+      m_end = m_end + 1 == m_limit ? m_base : m_end + 1;
 	// *** Your code goes here (12 marks)
     }
 
@@ -477,37 +453,23 @@ private:
     template <typename Ptr>
     Ptr stepForward(Ptr ptr, std::ptrdiff_t steps) const
     {
-        // TODO: Refactor
         if (steps == 0) return ptr;
+        T * literalBoundary = steps > 0 ? m_limit : m_base;
+        T * logicalBoundary = steps > 0 ? m_end : m_begin;
 
-        if (steps > 0)
+        for (int i = 0; i < steps; ++i)
         {
-            for (int i = 0; i < steps; ++i)
+            if (ptr == logicalBoundary)
             {
-                if (ptr == m_end)
-                {
-                    ptr = m_begin;
-                }
-                else
-                {
-                    ptr++;
-                }
+                std::cout << "Exceeded buffer" << std::endl;
+                return nullptr;
             }
-        }
-        else
-        {
-            steps *= -1;
-            for (int i = 0; i < steps; ++i)
+            if (ptr == literalBoundary)
             {
-                if (ptr == m_begin)
-                {
-                    ptr = m_end;
-                }
-                else
-                {
-                    ptr--;
-                }
+                ptr = logicalBoundary;
+                continue;
             }
+            ptr += steps > 0 ? 1 : -1;
         }
 
     return ptr;
