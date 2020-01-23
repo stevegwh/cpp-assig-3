@@ -200,7 +200,51 @@ public:
     difference_type
     operator-(const _RBIterator& rhs) const
     {
-       return (m_ptr - &*rhs);
+//        int counter = 0;
+//        auto n_it = _RBIterator(m_rb, m_ptr);
+//
+//        while (*n_it != *rhs) {
+//
+//            counter++;
+//            n_it--;
+//        }
+//
+//        return counter;
+        if (&**this == &*rhs) return 0;
+        auto it = m_rb->begin();
+        auto end = m_rb->end();
+        bool wrap = false;
+        // Check if it's necessary to wrap the method
+        while (it != end)
+        {
+            if (it == *this)
+            {
+                break;
+            }
+            if (&*it == m_rb->m_limit)
+            {
+                wrap = true;
+                break;
+            }
+            it++;
+        }
+        std::cout << "Calling wrap?: " << wrap << std::endl;
+        return wrap ? (m_ptr - m_rb->m_base) + ((m_rb->m_limit - 1) - &*rhs)  : m_ptr - &*rhs;
+//        std::cout << "Right bigger than left?: " << (&*rhs < &**this) << std::endl;
+//        std::cout << "Limit minus ptr, rhs minus base: " << (m_rb->m_limit - m_ptr) + (&*rhs - m_rb->m_base) << std::endl;
+//    if (&*rhs < &**this)
+//    {
+//        return ((m_rb->m_limit - 1)  - m_ptr) + (&*rhs - m_rb->m_base);
+//    }
+//    else
+//    {
+//    }
+        return m_ptr - &*rhs;
+//        return &*rhs < &**this ? ((m_rb->m_limit - 1)  - m_ptr) + (&*rhs - m_rb->m_base) : m_ptr - &*rhs;
+        return (m_ptr - &*rhs);
+
+//         (m_limit - m_ptr) + (rhs - m_base)
+//        return (m_ptr - &*rhs);
     }
 
     Reference operator[](difference_type n)
@@ -226,7 +270,7 @@ operator<(const _RBIterator<T, Pointer, Reference>& l,
 }
 
 /** @brief Ring Buffer.
- *
+// *
  * @tparam T Type of object to be contained in the RingBuffer.
  */
 template <typename T>
@@ -378,8 +422,16 @@ public:
     {
       if (!empty())
       {
-        *m_begin = 0;
-        m_begin = m_begin == m_limit ? m_base : m_begin + 1;
+        *m_begin = 100;
+        if (m_begin == m_limit)
+        {
+          m_begin = m_base;
+        }
+        else
+        {
+          m_begin++;
+        }
+          std::cout << size() << std::endl;
       }
 	// *** Your code goes here (10 marks)
     }
@@ -393,16 +445,23 @@ public:
      */
     void push_back(const T& elem)
     {
-
-      if (m_end + 1 == m_begin)
+    if (size() == capacity() - 1)
       {
         //TODO: Exception needed
          std::cout << "Buffer full, throw exception here" << std::endl;
          return;
       }
         *m_end = elem;
-      m_end = m_end + 1 == m_limit ? m_base : m_end + 1;
-	// *** Your code goes here (12 marks)
+        if (m_end + 1 == m_limit)
+        {
+            m_end = m_base;
+        }
+        else
+        {
+            m_end++;
+        }
+        std::cout << size() << std::endl;
+        // *** Your code goes here (12 marks)
     }
 
     size_type size() const
@@ -453,9 +512,10 @@ private:
     template <typename Ptr>
     Ptr stepForward(Ptr ptr, std::ptrdiff_t steps) const
     {
+        // TODO: Shouldn't print end() in for loop (0)
         if (steps == 0) return ptr;
         T * literalBoundary = steps > 0 ? m_limit : m_base;
-        T * logicalBoundary = steps > 0 ? m_end : m_begin;
+        T * logicalBoundary = steps > 0 ? m_end: m_begin;
 
         for (int i = 0; i < steps; ++i)
         {
