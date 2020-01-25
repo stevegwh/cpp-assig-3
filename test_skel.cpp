@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <deque>
+#include <vector>
 
 #include "RingBuffer.hpp"
 
@@ -31,9 +32,8 @@ int main()
     rb.pop_front();
     rb.pop_front();
 //    rb.pop_front();
-//    rb.push_back(7);
-//    rb.push_back(7);
-//    rb.push_back(7);
+    rb.push_back(7);
+    rb.push_back(8);
 
 
     cout << "Empty? " << rb.empty()
@@ -50,9 +50,11 @@ int main()
 
 /*
     auto it1 = rb.begin();
-    auto it2 = rb.begin() + 2;
-    cout << (it2 < it1) << endl;
-    cout << *it1 << endl;
+    auto it2 = rb.begin() + 4;
+//    cout << (it2 < it1) << endl;
+    cout << *it2 << endl;
+*/
+/*
     it1++;
     cout << *it1 << endl;
     it1++;

@@ -25,6 +25,10 @@ iostream
 -
 string
 -
+deque
+-
+vector
+-
 RingBuffer.hpp
 /home/forest/CLionProjects/cpp-assig-3/RingBuffer.hpp
 

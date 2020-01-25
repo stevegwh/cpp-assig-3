@@ -221,7 +221,7 @@ public:
             {
                 break;
             }
-            if (&*it == m_rb->m_limit)
+            if (&*it == m_rb->m_limit - 1)
             {
                 wrap = true;
                 break;
@@ -229,7 +229,7 @@ public:
             it++;
         }
         std::cout << "Calling wrap?: " << wrap << std::endl;
-        return wrap ? (m_ptr - m_rb->m_base) + ((m_rb->m_limit - 1) - &*rhs)  : m_ptr - &*rhs;
+        return wrap ? (m_ptr - m_rb->m_base) + ((m_rb->m_limit) - &*rhs)  : m_ptr - &*rhs;
 //        std::cout << "Right bigger than left?: " << (&*rhs < &**this) << std::endl;
 //        std::cout << "Limit minus ptr, rhs minus base: " << (m_rb->m_limit - m_ptr) + (&*rhs - m_rb->m_base) << std::endl;
 //    if (&*rhs < &**this)
@@ -524,6 +524,7 @@ private:
                 std::cout << "Exceeded buffer" << std::endl;
                 return nullptr;
             }
+            // TODO: This makes 0 sense
             if (ptr == literalBoundary)
             {
                 ptr = logicalBoundary;
