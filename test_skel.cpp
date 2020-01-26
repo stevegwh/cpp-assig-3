@@ -20,9 +20,11 @@ void show(const RingBuffer<int>& rb)
 int main()
 {
     RingBuffer<int> rb(7);
+    RingBuffer<std::string> rb2(7);
     cout << "Capacity: " << rb.capacity()
 	 << "\nEmpty? " << rb.empty() << endl;
 
+    // TODO: pop_front() breaks after 8 times
     rb.push_back(1);
     rb.push_back(2);
     rb.push_back(3);
@@ -31,9 +33,25 @@ int main()
     rb.push_back(6);
     rb.pop_front();
     rb.pop_front();
-//    rb.pop_front();
+    // 4
     rb.push_back(7);
     rb.push_back(8);
+    // 6
+    rb.pop_front();
+    rb.pop_front();
+    rb.pop_front();
+    rb.pop_front();
+    // 2
+    rb.push_back(7);
+    rb.push_back(8);
+    rb.push_back(7);
+    rb.push_back(8);
+    // 6
+    rb.pop_front();
+    rb.pop_front();
+    rb.push_back(8);
+    rb.push_back(8);
+    // 4
 
 
     cout << "Empty? " << rb.empty()

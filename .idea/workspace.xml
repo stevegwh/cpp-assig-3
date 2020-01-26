@@ -14,8 +14,6 @@
     <list default="true" id="13746e72-1127-40cd-ad37-a6e99c991048" name="Default Changelist" comment="Almost done, bug with printing end()">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RingBuffer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/RingBuffer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp_assig_3.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp_assig_3.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/cpp_assig_3" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cpp_assig_3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test" beforeDir="false" afterPath="$PROJECT_DIR$/test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_skel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test_skel.cpp" afterDir="false" />
     </list>
@@ -82,7 +80,7 @@
       <workItem from="1579609310719" duration="1736000" />
       <workItem from="1579705256829" duration="872000" />
       <workItem from="1579712152245" duration="15423000" />
-      <workItem from="1579786426927" duration="20781000" />
+      <workItem from="1579786426927" duration="23991000" />
     </task>
     <task id="LOCAL-00001" summary="Added size method">
       <created>1579100539365</created>

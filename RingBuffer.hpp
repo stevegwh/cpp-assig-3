@@ -142,7 +142,6 @@ public:
     bool operator==(const _RBIterator& rhs) const
     {
         return m_ptr == rhs.m_ptr;
-//	return false;  // *** Replace this with your code (2 marks)
     }
 
     bool operator!=(const _RBIterator& rhs) const
@@ -153,7 +152,6 @@ public:
     _RBIterator& operator++()
     {
         m_ptr = m_rb->stepForward(m_ptr, 1);
-        // std::cout << "Plus plus 1 called" << std::endl;
         return *this;  // *** Replace this with your code (4 marks)
     }
 
@@ -166,7 +164,6 @@ public:
 
     _RBIterator& operator--()
     {
-        // std::cout << "minus minus 1 called" << std::endl;
         m_ptr = m_rb->stepForward(m_ptr, -1);
         return *this; // *** Replace this with your code (4 marks)
     }
@@ -200,16 +197,6 @@ public:
     difference_type
     operator-(const _RBIterator& rhs) const
     {
-//        int counter = 0;
-//        auto n_it = _RBIterator(m_rb, m_ptr);
-//
-//        while (*n_it != *rhs) {
-//
-//            counter++;
-//            n_it--;
-//        }
-//
-//        return counter;
         if (&**this == &*rhs) return 0;
         auto it = m_rb->begin();
         auto end = m_rb->end();
@@ -228,23 +215,7 @@ public:
             }
             it++;
         }
-        std::cout << "Calling wrap?: " << wrap << std::endl;
         return wrap ? (m_ptr - m_rb->m_base) + ((m_rb->m_limit) - &*rhs)  : m_ptr - &*rhs;
-//        std::cout << "Right bigger than left?: " << (&*rhs < &**this) << std::endl;
-//        std::cout << "Limit minus ptr, rhs minus base: " << (m_rb->m_limit - m_ptr) + (&*rhs - m_rb->m_base) << std::endl;
-//    if (&*rhs < &**this)
-//    {
-//        return ((m_rb->m_limit - 1)  - m_ptr) + (&*rhs - m_rb->m_base);
-//    }
-//    else
-//    {
-//    }
-        return m_ptr - &*rhs;
-//        return &*rhs < &**this ? ((m_rb->m_limit - 1)  - m_ptr) + (&*rhs - m_rb->m_base) : m_ptr - &*rhs;
-        return (m_ptr - &*rhs);
-
-//         (m_limit - m_ptr) + (rhs - m_base)
-//        return (m_ptr - &*rhs);
     }
 
     Reference operator[](difference_type n)
@@ -319,14 +290,12 @@ public:
 
     iterator begin()
     {
-        // std::cout << "Normal constructor called" << std::endl;
         std::unique_ptr<iterator> it(new iterator(this, m_begin));
         return *it;
     }
 
     const_iterator begin() const
     {
-        // std::cout << "Const constructor called" << std::endl;
         const std::unique_ptr<const_iterator> it(new const_iterator(this, m_begin));
         return *it;
 //      return const_iterator(); // *** Replace this with your code (2 marks)
@@ -357,6 +326,7 @@ public:
         auto it =  begin();
         while (it != end())
         {
+            // TODO: Will not work
             *it = 0;
             it++;
         }
@@ -422,8 +392,7 @@ public:
     {
       if (!empty())
       {
-        *m_begin = 100;
-        if (m_begin == m_limit)
+        if (m_begin + 1 == m_limit)
         {
           m_begin = m_base;
         }
@@ -431,7 +400,7 @@ public:
         {
           m_begin++;
         }
-          std::cout << size() << std::endl;
+//          std::cout << size() << std::endl;
       }
 	// *** Your code goes here (10 marks)
     }
@@ -460,7 +429,7 @@ public:
         {
             m_end++;
         }
-        std::cout << size() << std::endl;
+//        std::cout << size() << std::endl;
         // *** Your code goes here (12 marks)
     }
 
@@ -512,9 +481,9 @@ private:
     template <typename Ptr>
     Ptr stepForward(Ptr ptr, std::ptrdiff_t steps) const
     {
-        // TODO: Shouldn't print end() in for loop (0)
         if (steps == 0) return ptr;
-        T * literalBoundary = steps > 0 ? m_limit : m_base;
+        T * literalBoundary = steps > 0 ? m_limit - 1: m_base;
+        T * literalBoundary2 = literalBoundary == m_limit - 1? m_base : m_limit - 1;
         T * logicalBoundary = steps > 0 ? m_end: m_begin;
 
         for (int i = 0; i < steps; ++i)
@@ -524,10 +493,9 @@ private:
                 std::cout << "Exceeded buffer" << std::endl;
                 return nullptr;
             }
-            // TODO: This makes 0 sense
             if (ptr == literalBoundary)
             {
-                ptr = logicalBoundary;
+                ptr = literalBoundary2;
                 continue;
             }
             ptr += steps > 0 ? 1 : -1;
