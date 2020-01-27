@@ -208,7 +208,7 @@ public:
             {
                 break;
             }
-            if (&*it == m_rb->m_limit - 1)
+            if (&*it == m_rb->m_limit)
             {
                 wrap = true;
                 break;
@@ -323,13 +323,6 @@ public:
      */
     void clear()
     {
-        auto it =  begin();
-        while (it != end())
-        {
-            // TODO: Will not work
-            *it = 0;
-            it++;
-        }
         m_begin = m_base;
         m_end = m_base;
 	// *** Your code goes here (2 marks)
@@ -416,9 +409,7 @@ public:
     {
     if (size() == capacity() - 1)
       {
-        //TODO: Exception needed
-         std::cout << "Buffer full, throw exception here" << std::endl;
-         return;
+        throw std::length_error("Buffer size exceeded");
       }
         *m_end = elem;
         if (m_end + 1 == m_limit)
@@ -484,21 +475,17 @@ private:
         if (steps == 0) return ptr;
         T * literalBoundary = steps > 0 ? m_limit - 1: m_base;
         T * literalBoundary2 = literalBoundary == m_limit - 1? m_base : m_limit - 1;
-        T * logicalBoundary = steps > 0 ? m_end: m_begin;
+        int inc = steps > 0 ? 1 : -1;
+        steps *= steps > 0 ? 1 : -1;
 
         for (int i = 0; i < steps; ++i)
         {
-            if (ptr == logicalBoundary)
-            {
-                std::cout << "Exceeded buffer" << std::endl;
-                return nullptr;
-            }
             if (ptr == literalBoundary)
             {
                 ptr = literalBoundary2;
                 continue;
             }
-            ptr += steps > 0 ? 1 : -1;
+            ptr += inc;
         }
 
     return ptr;
