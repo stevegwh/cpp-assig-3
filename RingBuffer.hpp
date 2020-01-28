@@ -31,9 +31,6 @@
 #include <memory>
 #include <stdexcept>
 
-// TODO: Remove.
-#include <iostream>
-
 // This class template needs to be predeclared because the definition
 // of class template _RBIterator refers to it.
 template <typename T>
@@ -385,15 +382,7 @@ public:
     {
       if (!empty())
       {
-        if (m_begin + 1 == m_limit)
-        {
-          m_begin = m_base;
-        }
-        else
-        {
-          m_begin++;
-        }
-//          std::cout << size() << std::endl;
+          m_begin = &*(++begin());
       }
 	// *** Your code goes here (10 marks)
     }
@@ -412,15 +401,7 @@ public:
         throw std::length_error("Buffer size exceeded");
       }
         *m_end = elem;
-        if (m_end + 1 == m_limit)
-        {
-            m_end = m_base;
-        }
-        else
-        {
-            m_end++;
-        }
-//        std::cout << size() << std::endl;
+        m_end = &*(++end());
         // *** Your code goes here (12 marks)
     }
 

@@ -15,17 +15,11 @@ memory
 -
 stdexcept
 -
-iostream
--
 
 /home/forest/CLionProjects/cpp-assig-3/test_skel.cpp
 algorithm
 -
 iostream
--
-string
--
-deque
 -
 vector
 -

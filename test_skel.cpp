@@ -2,8 +2,6 @@
 
 #include <algorithm>
 #include <iostream>
-#include <string>
-#include <deque>
 #include <vector>
 
 #include "RingBuffer.hpp"
@@ -41,27 +39,20 @@ int main()
     rb.pop_front();
     rb.pop_front();
     // 2
+    rb.push_back(0);
     rb.push_back(1);
     rb.push_back(2);
     rb.push_back(3);
-    rb.push_back(4);
     // 6
     rb.pop_front();
     rb.pop_front();
+    rb.push_back(4);
     rb.push_back(5);
-    rb.push_back(6);
     // 4
 
 
     cout << "Empty? " << rb.empty()
          << "\nFront: " << rb.front() << endl;
-
-/*
-    auto it = rb.begin();
-    auto it2 = rb.begin() + 2;
-
-    std::cout << "begin + 2 - begin: " << (it - it2) << std::endl;
-    */
 
     show(rb);
 
@@ -77,6 +68,18 @@ int main()
     --incit;
     --incit;
     --incit;
+    cout << "Value after decrementing 5 times: " << *incit << endl;
+    ++incit;
+    ++incit;
+    ++incit;
+    ++incit;
+    ++incit;
+    cout << "Value after incrementing 5 times: " << *incit << endl;
+    incit--;
+    incit--;
+    incit--;
+    incit--;
+    incit--;
     cout << "Value after decrementing 5 times: " << *incit << endl;
     auto lessthanit = rb.begin() + 5;
     cout << "Result of 0 < 5: " << (rb.begin() < lessthanit) << endl;
@@ -102,28 +105,10 @@ int main()
     {
         cout << "Value at index: " << *it << endl;
     }
-/*
-    auto it1 = rb.begin() + 2;
-    auto it2 = rb.begin();
 
-    cout << "it1 - it2 = " << (it2 - it1) << endl;
-*/
-/*
-    auto it1 = rb.begin();
-    auto it2 = rb.end();
-    cout << (it1 == it2) << endl;
-*/
-
-/*
-    auto it = rb.begin();
-    int i = 0;
-    while(i < 10)
-    {
-        cout << *it << endl;
-        ++it;
-        i++;
-    }
-*/
+    auto plusequalsit = rb.begin();
+    plusequalsit += 2;
+    cout << "Value of += 2 to rb.begin(): " << *plusequalsit << endl;
 
     return 0;
 }
