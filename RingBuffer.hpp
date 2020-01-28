@@ -30,7 +30,6 @@
 #include <iterator>
 #include <memory>
 #include <stdexcept>
-#include <vector>
 
 // This class template needs to be predeclared because the definition
 // of class template _RBIterator refers to it.
@@ -376,17 +375,7 @@ public:
      */
     void pop_front()
     {
-      if (!empty())
-      {
-        if (m_begin + 1 == m_limit)
-        {
-          m_begin = m_base;
-        }
-        else
-        {
-          m_begin++;
-        }
-      }
+      if (!empty()) m_begin = &*(++begin());
 	// *** Your code goes here (10 marks)
     }
 
@@ -404,14 +393,15 @@ public:
         throw std::length_error("Buffer size exceeded");
       }
         *m_end = elem;
-        if (m_end + 1 == m_limit)
-        {
-            m_end = m_base;
-        }
-        else
-        {
-            m_end++;
-        }
+        m_end = &*(++end());
+//        if (m_end + 1 == m_limit)
+//        {
+//            m_end = m_base;
+//        }
+//        else
+//        {
+//            m_end++;
+//        }
         // *** Your code goes here (12 marks)
     }
 
@@ -472,11 +462,6 @@ private:
 
         for (int i = 0; i < steps; ++i)
         {
-            // If about to exceed 'logical' limits, return ptr
-            if (ptr == logicalBoundary)
-            {
-                return ptr;
-            }
             if (ptr == literalBoundary)
             {
                 ptr = literalBoundary2;

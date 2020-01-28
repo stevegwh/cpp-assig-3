@@ -43,22 +43,22 @@ int main()
     rb.push_back(4);
     rb.push_back(5);
     rb.push_back(6);
-//    rb.pop_front();
-//    rb.pop_front();
-//    rb.pop_front();
-//    rb.pop_front();
-//    rb.push_back(1);
-//    rb.push_back(2);
-//    rb.push_back(3);
-//    rb.push_back(4);
-//    rb.pop_front();
-//    rb.pop_front();
-//    rb.pop_front();
-//    rb.pop_front();
-//    rb.push_back(1);
-//    rb.push_back(2);
-//    rb.push_back(3);
-//    rb.push_back(4);
+    rb.pop_front();
+    rb.pop_front();
+    rb.pop_front();
+    rb.pop_front();
+    rb.push_back(1);
+    rb.push_back(2);
+    rb.push_back(3);
+    rb.push_back(4);
+    rb.pop_front();
+    rb.pop_front();
+    rb.pop_front();
+    rb.pop_front();
+    rb.push_back(1);
+    rb.push_back(2);
+    rb.push_back(3);
+    rb.push_back(4);
 
     cout << "Empty? " << rb.empty()
          << "\nFront: " << rb.front() << endl;
@@ -70,7 +70,9 @@ int main()
     incit++;
     incit++;
     incit++;
+    incit++;
     cout << "Value after incrementing 5 times: " << *incit << endl;
+    --incit;
     --incit;
     --incit;
     --incit;
@@ -112,10 +114,10 @@ int main()
     {
         cout << "Value at index: " << *it << endl;
     }
-//
-//    auto plusequalsit = rb.begin();
-//    plusequalsit += 2;
-//    cout << "Value of += 2 to rb.begin(): " << *plusequalsit << endl;
+
+    auto plusequalsit = rb.begin();
+    plusequalsit += 2;
+    cout << "Value of += 2 to rb.begin(): " << *plusequalsit << endl;
 
     return 0;
 }

@@ -12,13 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="13746e72-1127-40cd-ad37-a6e99c991048" name="Default Changelist" comment="Almost done, bug with printing end()">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RingBuffer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/RingBuffer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp_assig_3.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp_assig_3.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp_assig_3.dir/test_skel.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/cpp_assig_3.dir/test_skel.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/cpp_assig_3" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/cpp_assig_3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test" beforeDir="false" afterPath="$PROJECT_DIR$/test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_skel.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test_skel.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +82,7 @@
       <workItem from="1579786426927" duration="27989000" />
       <workItem from="1580087350192" duration="4546000" />
       <workItem from="1580214619065" duration="1066000" />
-      <workItem from="1580238239701" duration="11847000" />
+      <workItem from="1580238239701" duration="12416000" />
     </task>
     <task id="LOCAL-00001" summary="Added size method">
       <created>1579100539365</created>
@@ -180,22 +176,22 @@
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
     <state x="569" y="61" width="772" height="980" key="CommitChangelistDialog2/0.24.1920.1056@0.24.1920.1056" timestamp="1579802993167" />
-    <state width="1874" height="190" key="GridCell.Tab.0.bottom" timestamp="1580255159545">
+    <state width="1874" height="190" key="GridCell.Tab.0.bottom" timestamp="1580255693255">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="1874" height="190" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1580255159545" />
-    <state width="1874" height="190" key="GridCell.Tab.0.center" timestamp="1580255159545">
+    <state width="1874" height="190" key="GridCell.Tab.0.bottom/0.24.1920.1056@0.24.1920.1056" timestamp="1580255693255" />
+    <state width="1874" height="190" key="GridCell.Tab.0.center" timestamp="1580255693255">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="1874" height="190" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1580255159545" />
-    <state width="1874" height="190" key="GridCell.Tab.0.left" timestamp="1580255159545">
+    <state width="1874" height="190" key="GridCell.Tab.0.center/0.24.1920.1056@0.24.1920.1056" timestamp="1580255693255" />
+    <state width="1874" height="190" key="GridCell.Tab.0.left" timestamp="1580255693255">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="1874" height="190" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1580255159545" />
-    <state width="1874" height="190" key="GridCell.Tab.0.right" timestamp="1580255159545">
+    <state width="1874" height="190" key="GridCell.Tab.0.left/0.24.1920.1056@0.24.1920.1056" timestamp="1580255693255" />
+    <state width="1874" height="190" key="GridCell.Tab.0.right" timestamp="1580255693255">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
-    <state width="1874" height="190" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1580255159545" />
+    <state width="1874" height="190" key="GridCell.Tab.0.right/0.24.1920.1056@0.24.1920.1056" timestamp="1580255693255" />
     <state width="1874" height="346" key="GridCell.Tab.1.bottom" timestamp="1579777860458">
       <screen x="0" y="24" width="1920" height="1056" />
     </state>
