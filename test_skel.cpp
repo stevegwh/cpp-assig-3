@@ -33,23 +33,32 @@ int main()
     // 4
     rb.push_back(1);
     rb.push_back(2);
-    // 6
+//    // 6
     rb.pop_front();
     rb.pop_front();
     rb.pop_front();
     rb.pop_front();
-    // 2
-    rb.push_back(0);
-    rb.push_back(1);
-    rb.push_back(2);
+//    // 2
     rb.push_back(3);
-    // 6
-    rb.pop_front();
-    rb.pop_front();
     rb.push_back(4);
     rb.push_back(5);
-    // 4
-
+    rb.push_back(6);
+//    rb.pop_front();
+//    rb.pop_front();
+//    rb.pop_front();
+//    rb.pop_front();
+//    rb.push_back(1);
+//    rb.push_back(2);
+//    rb.push_back(3);
+//    rb.push_back(4);
+//    rb.pop_front();
+//    rb.pop_front();
+//    rb.pop_front();
+//    rb.pop_front();
+//    rb.push_back(1);
+//    rb.push_back(2);
+//    rb.push_back(3);
+//    rb.push_back(4);
 
     cout << "Empty? " << rb.empty()
          << "\nFront: " << rb.front() << endl;
@@ -61,9 +70,7 @@ int main()
     incit++;
     incit++;
     incit++;
-    incit++;
     cout << "Value after incrementing 5 times: " << *incit << endl;
-    --incit;
     --incit;
     --incit;
     --incit;
@@ -73,24 +80,24 @@ int main()
     ++incit;
     ++incit;
     ++incit;
-    ++incit;
     cout << "Value after incrementing 5 times: " << *incit << endl;
     incit--;
     incit--;
     incit--;
     incit--;
-    incit--;
     cout << "Value after decrementing 5 times: " << *incit << endl;
-    auto lessthanit = rb.begin() + 5;
-    cout << "Result of 0 < 5: " << (rb.begin() < lessthanit) << endl;
-    cout << "Result of 5 < 0: " << (lessthanit < incit) << endl;
+    auto lessthanit = rb.begin() + 3;
+    cout << "Result of 0 < 3: " << (rb.begin() < lessthanit) << endl;
+    cout << "Result of 3 < 0: " << (lessthanit < rb.begin()) << endl;
+    cout << "3 - 2 :" << ((rb.begin() + 3) - (rb.begin() + 2)) << endl;
+    cout << "2 - 3 :" << ((rb.begin() + 2) - (rb.begin() + 3)) << endl;
 
     cout << "Does ringbuffer match second empty ringbuffer?: " << (rb == rb2) << endl;
     cout << "Does ringbuffer match itself?: " << (rb == rb) << endl;
 
 
      auto minusit = rb.begin();
-     auto minusit2 = rb.begin() + 2;
+     auto minusit2 = rb.begin() + 1;
      cout << "Value of 'begin + 2' minus 'begin': " << minusit2 - minusit << endl;
     cout << "Value of 'begin' minus 'begin + 2': " << minusit - minusit2 << endl;
 
@@ -105,10 +112,10 @@ int main()
     {
         cout << "Value at index: " << *it << endl;
     }
-
-    auto plusequalsit = rb.begin();
-    plusequalsit += 2;
-    cout << "Value of += 2 to rb.begin(): " << *plusequalsit << endl;
+//
+//    auto plusequalsit = rb.begin();
+//    plusequalsit += 2;
+//    cout << "Value of += 2 to rb.begin(): " << *plusequalsit << endl;
 
     return 0;
 }

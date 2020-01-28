@@ -30,6 +30,7 @@
 #include <iterator>
 #include <memory>
 #include <stdexcept>
+#include <vector>
 
 // This class template needs to be predeclared because the definition
 // of class template _RBIterator refers to it.
@@ -192,28 +193,23 @@ public:
     // *** In implementing the following method, you may assume that
     // *** rhs relates to the same RingBuffer as *this.
     difference_type
-    operator-(const _RBIterator& rhs) const
-    {
-        if (&**this == &*rhs) return 0;
-        auto it = m_rb->begin();
-        auto end = m_rb->end();
-        bool wrap = false;
-        // Check if it's necessary to wrap the method
-        while (it != end)
+    operator-(const _RBIterator& rhs) const {
+        if (m_ptr == &*rhs) return 0;
+        if (m_ptr > &*rhs) return m_ptr - &*rhs;
+
+        auto it = m_ptr;
+        // See if a wrap is necessary
+        while(it != &*m_rb->end())
         {
-            if (it == *this)
+            if (it == &*rhs)
             {
-                break;
+                return (&*rhs - m_ptr) * -1;
             }
-            if (&*it == m_rb->m_limit)
-            {
-                wrap = true;
-                break;
-            }
-            it++;
+            ++it;
         }
-        return wrap ? (m_ptr - m_rb->m_base) + ((m_rb->m_limit) - &*rhs)  : m_ptr - &*rhs;
+        return ((m_rb->m_limit - &*rhs) + (m_ptr - m_rb->m_base));
     }
+
 
     Reference operator[](difference_type n)
     {
@@ -234,7 +230,7 @@ inline bool
 operator<(const _RBIterator<T, Pointer, Reference>& l,
 	  const _RBIterator<T, Pointer, Reference>& r)
 {
-    return (l - r) < 0;
+    return (l - r) > (r - l);
 }
 
 /** @brief Ring Buffer.
@@ -382,7 +378,14 @@ public:
     {
       if (!empty())
       {
-          m_begin = &*(++begin());
+        if (m_begin + 1 == m_limit)
+        {
+          m_begin = m_base;
+        }
+        else
+        {
+          m_begin++;
+        }
       }
 	// *** Your code goes here (10 marks)
     }
@@ -401,7 +404,14 @@ public:
         throw std::length_error("Buffer size exceeded");
       }
         *m_end = elem;
-        m_end = &*(++end());
+        if (m_end + 1 == m_limit)
+        {
+            m_end = m_base;
+        }
+        else
+        {
+            m_end++;
+        }
         // *** Your code goes here (12 marks)
     }
 
@@ -455,12 +465,18 @@ private:
     {
         if (steps == 0) return ptr;
         T * literalBoundary = steps > 0 ? m_limit - 1: m_base;
+        T * logicalBoundary = steps > 0 ? m_end : m_begin;
         T * literalBoundary2 = literalBoundary == m_limit - 1? m_base : m_limit - 1;
         int inc = steps > 0 ? 1 : -1;
         steps *= steps > 0 ? 1 : -1;
 
         for (int i = 0; i < steps; ++i)
         {
+            // If about to exceed 'logical' limits, return ptr
+            if (ptr == logicalBoundary)
+            {
+                return ptr;
+            }
             if (ptr == literalBoundary)
             {
                 ptr = literalBoundary2;
