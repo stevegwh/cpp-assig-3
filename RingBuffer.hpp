@@ -194,18 +194,26 @@ public:
     difference_type
     operator-(const _RBIterator& rhs) const {
         if (m_ptr == &*rhs) return 0;
-        if (m_ptr > &*rhs) return m_ptr - &*rhs;
+        // If the buffer hasn't wrapped around you can just subtract the pointers
+        if (&*m_rb->end() > &*m_rb->begin()) return m_ptr - &*rhs;
 
+        // Figure out which direction we need to step towards to find rhs
+        bool lhsBigger = m_ptr > &*rhs;
+        auto boundary = lhsBigger ? &*m_rb->begin() - 1: &*m_rb->end();
+        auto inc = lhsBigger ? -1 : 1;
         auto it = m_ptr;
-        // See if a wrap is necessary
-        while(it != &*m_rb->end())
+
+        // See if you can reach rhs without hitting begin/end.
+        while(it != boundary)
         {
             if (it == &*rhs)
             {
-                return (&*rhs - m_ptr) * -1;
+                return lhsBigger ? m_ptr - &*rhs : (&*rhs - m_ptr) * -1;
             }
-            ++it;
+            it += inc;
         }
+        // If lhs and rhs aren't contiguous then subtract each pointer from the extremities
+        // of the literal array.
         return ((m_rb->m_limit - &*rhs) + (m_ptr - m_rb->m_base));
     }
 
@@ -229,7 +237,7 @@ inline bool
 operator<(const _RBIterator<T, Pointer, Reference>& l,
 	  const _RBIterator<T, Pointer, Reference>& r)
 {
-    return (l - r) > (r - l);
+    return (l - r) < 0;
 }
 
 /** @brief Ring Buffer.
@@ -455,7 +463,6 @@ private:
     {
         if (steps == 0) return ptr;
         T * literalBoundary = steps > 0 ? m_limit - 1: m_base;
-        T * logicalBoundary = steps > 0 ? m_end : m_begin;
         T * literalBoundary2 = literalBoundary == m_limit - 1? m_base : m_limit - 1;
         int inc = steps > 0 ? 1 : -1;
         steps *= steps > 0 ? 1 : -1;

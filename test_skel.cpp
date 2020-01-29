@@ -34,31 +34,23 @@ int main()
     rb.push_back(1);
     rb.push_back(2);
 //    // 6
-    rb.pop_front();
-    rb.pop_front();
-    rb.pop_front();
-    rb.pop_front();
+   rb.pop_front();
+   rb.pop_front();
+   rb.pop_front();
+   rb.pop_front();
 //    // 2
-    rb.push_back(3);
-    rb.push_back(4);
-    rb.push_back(5);
-    rb.push_back(6);
-    rb.pop_front();
-    rb.pop_front();
-    rb.pop_front();
-    rb.pop_front();
-    rb.push_back(1);
-    rb.push_back(2);
-    rb.push_back(3);
-    rb.push_back(4);
-    rb.pop_front();
-    rb.pop_front();
-    rb.pop_front();
-    rb.pop_front();
-    rb.push_back(1);
-    rb.push_back(2);
-    rb.push_back(3);
-    rb.push_back(4);
+   rb.push_back(0);
+   rb.push_back(1);
+   rb.push_back(2);
+   rb.push_back(3);
+   rb.pop_front();
+   rb.pop_front();
+   rb.pop_front();
+   rb.pop_front();
+   rb.push_back(4);
+   rb.push_back(5);
+   rb.push_back(6);
+   rb.push_back(7);
 
     cout << "Empty? " << rb.empty()
          << "\nFront: " << rb.front() << endl;
@@ -93,13 +85,15 @@ int main()
     cout << "Result of 3 < 0: " << (lessthanit < rb.begin()) << endl;
     cout << "3 - 2 :" << ((rb.begin() + 3) - (rb.begin() + 2)) << endl;
     cout << "2 - 3 :" << ((rb.begin() + 2) - (rb.begin() + 3)) << endl;
+    cout << "5 - 3 :" << ((rb.begin() + 5) - (rb.begin() + 3)) << endl;
+    cout << "3 - 5 :" << ((rb.begin() + 3) - (rb.begin() + 5)) << endl;
 
     cout << "Does ringbuffer match second empty ringbuffer?: " << (rb == rb2) << endl;
     cout << "Does ringbuffer match itself?: " << (rb == rb) << endl;
 
 
      auto minusit = rb.begin();
-     auto minusit2 = rb.begin() + 1;
+     auto minusit2 = rb.begin() + 2;
      cout << "Value of 'begin + 2' minus 'begin': " << minusit2 - minusit << endl;
     cout << "Value of 'begin' minus 'begin + 2': " << minusit - minusit2 << endl;
 
